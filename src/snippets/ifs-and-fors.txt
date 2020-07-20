@@ -1,0 +1,32 @@
+type GuineaPig {
+  init var name: String
+  init var age: Number
+}
+
+page MyPage {
+  route '/'
+
+  var guineaPigs = [
+    GuineaPig(name: 'Charlie', age: 4)
+    GuineaPig(name: 'Carrot', age: 2)
+    GuineaPig(name: 'Snowball', age: 3)
+  ]
+
+  fun addGuineaPig() {
+    guineaPigs.add(GuineaPig(name: 'Sarah', age: 0.5))
+  }
+
+  View {
+    if guineaPigs.empty() -> Text('Sorry, we dont have any guinea pigs...')
+
+    for pet in guineaPigs -> View {
+      Text('This guinea pig is called \(pet.name) and is \(pet.age) years old.')
+
+      Link('/pics/\(pet.name).jpg') {
+      	Text('Click here to see pictures!')
+      }
+    }
+
+    Button('Add another guinea pig!', click: addGuineaPig)
+  }
+}

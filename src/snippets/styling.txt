@@ -1,0 +1,23 @@
+page MyPage {
+  route '/'
+
+  var helloWorldSize = 14
+
+  fun incrementSize() {
+    helloWorldSize += 1
+  }
+
+  View(color: Color.blue, padding: Padding(x: 4, y: 4)) {
+    Text('Very hard to see!',
+      textSize: helloWorldSize,
+      textColor: Color.red
+    )
+
+    Button('Click me!',
+      click: incrementSize,
+      color: Color('1cb052'),
+      textColor: Color.white,
+      padding: Padding(x: 4, y: 2)
+    )
+  }
+}

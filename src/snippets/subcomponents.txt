@@ -1,0 +1,23 @@
+page UserDetails {
+  // init vars are like vue props, they can be initialized through a constructor
+  init var name: String
+  init var age: Number
+
+  View {
+    Text('-> User: \(name)')
+
+    Text('-> Age: \(age)')
+  }
+}
+
+page MyPage {
+  route '/'
+
+  View {
+    Text('User 1:')
+    UserDetails(name: 'Jeremy', age: 23)
+
+    Text('User 2:')
+    UserDetails(name: 'Tom', age: 27)
+  }
+}

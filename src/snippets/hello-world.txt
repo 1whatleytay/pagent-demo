@@ -1,0 +1,7 @@
+page Home {
+  route '/'
+
+  View {
+    Text('Hello World!')
+  }
+}

@@ -1,0 +1,108 @@
+var someBlue = Color('4F8AE9')
+var someGray = Color('EEEEEE')
+var someTextGray = Color('666666')
+
+var plusSquareIcon = 'https://raw.githubusercontent.com/sschoger/heroicons-ui/master/svg/icon-plus-square.svg'
+
+type Message {
+  init var title: String
+  init var description: String
+  init var icon: String
+}
+
+page Messages {
+  init var messages: [Message]
+
+  View {
+    Link(link: '/today') {
+      Scene {
+        View(height: 2, color: Color.gray, stretch: true, column: 1)
+
+        Text('Messages', textAlign: Align.center, column: 1, textSize: 24)
+
+        View(height: 2, color: Color.gray, stretch: true, column: 1)
+      }
+    }
+
+    for message in messages -> View {
+      Clickable(color: someGray, padding: Padding(4), margin: Margin(y: 4), rounded: 6, column: 1) {
+        Scene(contentAlign: ContentAlign.center) {
+          Image(message.icon, row: 1, rounded: 80, width: 16, height: 16, margin: Margin(x: 8))
+
+          View(stretch: true) {
+            Text(message.title, textAlign: Align.left)
+
+            Text(message.description, textColor: someTextGray, textAlign: Align.left)
+          }
+        }
+      }
+    }
+  }
+}
+
+page Content {
+  route '/'
+
+  var messages = [
+    Message(
+      title: 'Party Wednesday',
+      description: 'Is everyone good for 8?',
+      icon: '/pics/Charlie.jpg'
+    )
+    Message(
+      title: 'Are you finished work?',
+      description: 'I\'m thinking of buying strawberries.',
+      icon: '/pics/Carrot.jpg'
+    )
+    Message(
+      title: 'What a great video!',
+      description: 'Haha, I laughed my whole way through.',
+      icon: '/pics/Sarah.jpg'
+    )
+    Message(
+      title: 'This is incredible!?',
+      description: 'Where did you find this?',
+      icon: '/pics/Snowball.jpg'
+    )
+  ]
+
+  View(padding: Padding(y: 4, x: 16), stretch: true) {
+    Scene(contentAlign: ContentAlign.center) {
+      Text('Inbox', textSize: 48)
+
+      Scene(align: Align.right, contentAlign: ContentAlign.center) {
+        // row: 1 required here, investigate why T_T
+        Clickable(padding: Padding(x: 8, y: 2), color: someGray, rounded: 80, row: 1, border: Border(size: 2, color: someBlue)) {
+          Scene(contentAlign: ContentAlign.center) {
+            Image(plusSquareIcon, width: 16, height: 16)
+          }
+        }
+      }
+    }
+
+    Messages(messages)
+  }
+}
+
+page Tab {
+  init var name: String
+  init var icon: String
+
+  init var badge: Number?
+
+  init var selected = false
+
+  View {
+    Clickable(row: 1) {
+      Scene(padding: Padding(y: 4), contentAlign: ContentAlign.center,
+        color: if selected -> Color.blue else -> someBlue) {
+        Image(icon, width: 12, height: 12, padding: Padding(r: 4))
+
+        Text(name, textColor: Color.white)
+
+        if has badge ->
+          Text(badge, color: Color.white, rounded: 80, align: Align.right, padding: Padding(x: 6))
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+page Home {
+  route '/'
+
+  var numberOfPeople = 0
+
+  View {
+    Text('There are \(numberOfPeople) people.')
+
+    Button('Add Person', click: { numberOfPeople += 1 })
+    Button('Remove Person', click: { numberOfPeople -= 1 })
+  }
+}
