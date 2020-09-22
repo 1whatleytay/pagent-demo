@@ -83,7 +83,7 @@ export default {
     compile() {
       this.error = null
 
-      axios.put('http://localhost:3000/compile', this.source)
+      axios.put('https://desgroup.me/compile', this.source)
         .catch((err) => {
           this.error = err
         })
