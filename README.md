@@ -1,24 +1,5 @@
-# demo
+# pagent-demo - Demo webpage for Pagent language.
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This is a demo webpage, with a live source editing page, preview and samples to try out the pagent language.
+You can find Pagent [here](https://github.com/1whatleytay/pagent).
+This webapge requires the backend compiler to work which can be found [here](https://github.com/1whatleytay/pagent-democ).
